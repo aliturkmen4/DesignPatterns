@@ -19,10 +19,8 @@ namespace AbstractFactory
             productManager.GetAll();
 
             Console.ReadLine();
-
         }
     }
-
     public abstract class Logging
     {
         public abstract void Log(string message);
@@ -43,12 +41,10 @@ namespace AbstractFactory
             Console.WriteLine("Logged with Nlogger");
         }
     }
-
     public abstract class Caching
     {
         public abstract void Cache(string data);
     }
-
     public class MemCache : Caching
     {
         public override void Cache(string data)
@@ -63,14 +59,12 @@ namespace AbstractFactory
             Console.WriteLine("Cached with Redis");
         }
     }
-
     public abstract class CrossCuttingConcernsFactory //class soyut içindekiler soyutsa burdan yeni fabrikalar üretebilirim!!!!
     {
         public abstract Logging CreateLogger();
 
         public abstract Caching CreateCaching();
     }
-
     public class Factory1 : CrossCuttingConcernsFactory //bunu yaptığım anda ikisi için method üretmeiş oluyorum!!!
     {
         public override Caching CreateCaching()
@@ -83,7 +77,6 @@ namespace AbstractFactory
             return new Log4NetLogger();
         }
     }
-
     public class Factory2 : CrossCuttingConcernsFactory //bunu yaptığım anda ikisi için method üretmeiş oluyorum!!!
     {
         public override Caching CreateCaching()
@@ -96,7 +89,6 @@ namespace AbstractFactory
             return new NLogger();
         }
     }
-
     public class ProductManager //kullanıcının kullanacayı factory'i kullanıcıya göre belirlemiş oldum!
     {
 
